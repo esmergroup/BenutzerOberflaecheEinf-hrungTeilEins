@@ -1,0 +1,36 @@
+import javax.swing.*;
+import java.awt.event.*;
+
+public class TestJFrame extends JFrame {
+	JButton testButton = new JButton(“Schaltflaeche”);
+	
+	public TestFrame() {
+		initComponents();
+	}
+	
+	public void initComponents() {
+		setTitle("Ein JFrame");		// Fenstertitel einstellen
+		testButton.addActionListener(new TestActionListener()); // EventListener
+		add(JButton);		// Schaltflaeche hinzufügen
+		pack();
+		setSize(300, 300);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	class TestActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			// Wird in der konsole angezeigt sobald man auf die Taste drückt.
+			System.out.println("Schaltflaeche wurde gedückt");
+		}
+	}
+	
+	public static void main(String[] args) {
+		// Erzeugt einen neuen Thread, der eine Instanz von TestFrame erzeugt.
+		SwingUtilities.invokeLater(new Runnable()) {
+			public void run() {
+				new TestJFrame();
+			}
+		}
+	}
+}	
